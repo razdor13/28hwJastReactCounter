@@ -1,10 +1,9 @@
 {
   "name": "25",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm-run-all --parallel watch:dist watch:server",
     "watch:dist": "webpack --progress --watch",
@@ -21,6 +20,7 @@
     "autoprefixer": "^10.4.17",
     "babel-plugin-react-require": "^4.0.2",
     "css-loader": "^6.10.0",
+    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^8.1.0",
@@ -44,5 +44,6 @@
     "react-dom": "^18.2.0",
     "url": "^0.11.3",
     "ws": "^8.16.0"
-  }
+  },
+  "description": ""
 }

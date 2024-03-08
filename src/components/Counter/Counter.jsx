@@ -1,43 +1,33 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import '../Counter/Counter.scss'
 
 
 
-class Counter extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            count: this.props.initialValue
-          };
-    }
-    increment = () => {
-        this.setState(prevState => ({
-          count: prevState.count + 1
-        }));
-      };
-    
-    decrement = () => {
-        this.setState(prevState => ({
-          count: prevState.count - 1
-        }));
-      };  
-    
-    reset = () => {
-        this.setState({
-          count: this.props.initialValue
-        });
-      }; 
+const Counter = (props) => {
 
-    render() {
-        return (
-            <div>
-              <h2>Counter: {this.state.count}</h2>
-              <button onClick={this.decrement}>-</button>
-              <button onClick={this.increment}>+</button>
-              <button onClick={this.reset}>Reset</button>
-            </div>
-          );
-    }
+  const [count, setCount] = useState(props.initialValue)
+  const increment = () => {
+    setCount(prevState => ++prevState)
+  };
+
+  const decrement = () => {
+    setCount(prevCount => --prevCount);
+  };
+
+  const reset = () => {
+    setCount(props.initialValue);
+  };
+
+  return (
+    <div>
+      <h2>Counter: {count}</h2>
+      <button onClick={decrement}>-</button>
+      <button onClick={increment}>+</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  )
+
+
 }
 
 
