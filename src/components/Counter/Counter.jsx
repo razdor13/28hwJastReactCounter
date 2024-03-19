@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import '../Counter/Counter.scss'
-
-
+import { useDispatch, useSelector,  } from 'react-redux';
+import '../Counter/Counter.scss';
+import updateCount from '../../actions/updateCount.js';
 
 const Counter = (props) => {
-
-  const [count, setCount] = useState(props.initialValue)
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.count);
+  const init = useSelector((state)=> state.initialCount)
   const increment = () => {
-    setCount(prevState => ++prevState)
+    dispatch(updateCount(count + 1)); // Increase count by 1
   };
 
   const decrement = () => {
-    setCount(prevCount => --prevCount);
+    console.log(props)
+    dispatch(updateCount(count - 1)); // Decrease count by 1
   };
 
   const reset = () => {
-    setCount(props.initialValue);
+    dispatch(updateCount(init)); // Reset to initial value
   };
 
   return (
@@ -25,10 +26,7 @@ const Counter = (props) => {
       <button onClick={increment}>+</button>
       <button onClick={reset}>Reset</button>
     </div>
-  )
+  );
+};
 
-
-}
-
-
-export default Counter
+export default Counter;
