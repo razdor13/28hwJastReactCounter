@@ -1,30 +1,30 @@
-import { useDispatch, useSelector,  } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import '../Counter/Counter.scss';
-import updateCount from '../../actions/updateCount.js';
 
+import { increment, decrement, reset ,selectCount} from '../../redux/slices/counterSlice.js';
+console.log(selectCount)
 const Counter = (props) => {
   const dispatch = useDispatch();
-  const count = useSelector((state) => state.count);
-  const init = useSelector((state)=> state.initialCount)
-  const increment = () => {
-    dispatch(updateCount(count + 1)); // Increase count by 1
+  const qwexqwexqwe = useSelector(selectCount)
+  
+  const incrementCounter = () => {
+    dispatch(increment()); // Increase count by 1
   };
 
-  const decrement = () => {
-    console.log(props)
-    dispatch(updateCount(count - 1)); // Decrease count by 1
+  const decrementCounter = () => {
+    dispatch(decrement()); // Decrease count by 1
   };
 
-  const reset = () => {
-    dispatch(updateCount(init)); // Reset to initial value
+  const resetCounter = () => {
+    dispatch(reset()); // Reset to initial value
   };
 
   return (
     <div>
-      <h2>Counter: {count}</h2>
-      <button onClick={decrement}>-</button>
-      <button onClick={increment}>+</button>
-      <button onClick={reset}>Reset</button>
+      <h2>Counter: {qwexqwexqwe}</h2>
+      <button onClick={decrementCounter}>-</button>
+      <button onClick={incrementCounter}>+</button>
+      <button onClick={resetCounter}>Reset</button>
     </div>
   );
 };
